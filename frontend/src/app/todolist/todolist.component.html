@@ -1,0 +1,73 @@
+
+<div class="container">
+
+    <div class="text-center mt-5">
+        <img src="https://scontent.xx.fbcdn.net/v/t1.15752-9/338812447_198571146268219_921285549531457767_n.png?_nc_cat=102&ccb=1-7&_nc_sid=aee45a&_nc_ohc=nHG-Tq2aUYgAX_VDpEI&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_AdSplAhicPdz6el-eOI4YWb-dB2t_jALk-kiinn_VZ39aw&oe=64626329" alt="" class="w-25">
+    </div>
+
+
+    <div class="card w-50 mx-auto mt-5 p-4">
+
+        <div class="row">
+
+            <div class="col-5">
+                <input [(ngModel)]="todo.sura" type="text" class="form-control" placeholder="Sura">
+            </div>
+
+            <div class="col-5">
+                <input [(ngModel)]="todo.date" type="date" class="form-control">
+            </div>
+
+            <div class="col-2">
+                <button class="btn btn-outline-warning" (click)="save()" >Add</button>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="card w-50 mx-auto mt-4 p-4">
+
+        <table class="table">
+
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Sura</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                    <th>Options</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                <tr *ngFor="let item of todos;let i = index" >
+                    <td> {{ i + 1 }} </td>
+                    <td> {{ item.sura }} </td>
+                    <td> {{ item.date }} </td>
+                    <td> 
+                        <span *ngIf="item.status == true" class="badge bg-success">Completed</span>    
+                        <span  *ngIf="item.status == false" class="badge bg-warning">Incompleted</span>    
+                    </td>
+                    <td>
+                        <span  (click)="delete(item._id)"  class="material-symbols-outlined">
+                            delete
+                        </span>
+
+                        <span  *ngIf="item.status == false"  (click)="done(item._id)" class="material-symbols-outlined">
+                            done
+                        </span>
+
+                    </td>
+                </tr>
+
+            </tbody>
+
+
+        </table>
+
+    </div>
+
+
+</div>
